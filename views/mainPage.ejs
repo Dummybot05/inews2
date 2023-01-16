@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">                                          
+<head>
+    <meta charset="utf-8">                                  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>main-page</title>                                
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container text-center mb-5">
+        <h1>Welcome to INews</h1>
+        <h2>Mr/Mr.s <span style="color: red;"><%= nameHere %></span></h2>
+    </div>
+
+<div class="container">
+    <div class="row">
+       <div class="col-12 mt-3 mb-1 text-center">
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
+    <button type="button" class="btn btn-secondary">America</button>
+    <button type="button" class="btn btn-secondary">Japan</button>
+    <button type="button" class="btn btn-secondary">China</button>
+  </div>
+       </div>
+       <div class="col-12 mt-1 mb-3 text-center">
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
+    <button type="button" class="btn btn-secondary">Brazil</button>
+    <button type="button" class="btn btn-secondary">Colombia</button>
+    <button type="button" class="btn btn-secondary">Egypt</button>
+  </div>
+       </div>
+       <div class="col-12">
+            <h3>Top News (For You)</h3>
+<% respond1.forEach((dataS) => { %>
+            <div class="card mb-3">
+                <img src="<%= dataS.urlToImage %>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%= dataS.title %></h5>
+                    <p class="card-text"><%= dataS.description %></p>
+                    <p class="card-text">Src: <a href="<%= dataS.url %>"><%= dataS.url %></a></p>
+<% var timeIs = Math.floor((new Date() - new Date(dataS.publishedAt))/60000) %>
+                    <p class="card-text"><small class="text-muted">Last updated <%= timeIs %> mins ago</small></p>
+                </div>
+            </div>
+<% }) %>
+       </div>
+
+    </div>
+</div>
+<script>
+var contrys = "https://sheltered-castle-47815.herokuapp.com";
+document.getElementsByTagName("button")[0]
+.addEventListener("click", function() {
+     window.open(contrys + "/america")
+})
+document.getElementsByTagName("button")[1]
+.addEventListener("click", function() {
+     window.open(contrys + "/japan")
+})
+document.getElementsByTagName("button")[2]
+.addEventListener("click", function() {
+     window.open(contrys + "/china")
+})
+document.getElementsByTagName("button")[3]
+.addEventListener("click", function() {
+     window.open(contrys + "/brazil")
+})
+document.getElementsByTagName("button")[4]
+.addEventListener("click", function() {
+     window.open(contrys + "/colombia")
+})
+document.getElementsByTagName("button")[5]
+.addEventListener("click", function() {
+     window.open(contrys + "/egypt")
+})
+
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
